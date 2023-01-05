@@ -1,0 +1,40 @@
+
+body{
+    background-color: #0DCAF0;
+}
+table,th,td{
+    width: 80%;
+    margin-top: 30px;
+    margin-left: 80px;
+    text-align: center;
+    background-color: #0D6EFD;
+    
+
+    font-size: large;
+    border: 1px solid;
+}
+td{
+    color:white;
+}
+
+.studentHeader
+{
+    color:white;
+    text-align: center;
+    padding: 50px;
+
+}
+.checkinButton
+{
+    margin-left:450px;
+}
+.checkoutButton{
+    margin-left: 200px;
+}
+.presentButton{
+    margin-left:45%;
+}
+.headingRow{
+    height: 70px;
+
+}
