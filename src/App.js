@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./App.css";
 function App() {
   const [students, setStudents] = useState([]);
+ 
   const [checkin, setCheckin] = useState(false);
   const [checkout, setCheckout] = useState(false);
   const [present, setPresent] = useState(false);
@@ -12,11 +13,15 @@ function App() {
     const roll = e.target[1].value;
     const classs = e.target[2].value;
     const section = e.target[3].value;
+
+    const checkInTime=new Date().toLocaleTimeString();
     const student = {
       name,
       roll,
       classs,
       section,
+
+      checkInTime,
     };
     setStudents([...students, student]);
     setCheckin(false);
@@ -30,6 +35,7 @@ function App() {
       return;
     }
     const newstudents = students.filter((student) => student.roll !== roll);
+    alert("Student "+student.name+" checked out At "+new Date().toLocaleTimeString());
     setStudents(newstudents);
     setCheckout(false);
   };
@@ -48,14 +54,15 @@ function App() {
             <input type="text" placeholder="Enter Roll no." />
             <input type="text" placeholder="Enter Class" />
             <input type="text" placeholder="Enter Section" />
-            <button type="submit">Submit</button>
+           
+            <button class="submitButton btn btn-primary" type="submit">Submit</button>
           </form>
         )}
         <br />
         {checkout && (
           <form onSubmit={(e) => handlecheckout(e)}>
             <input type="text" placeholder="Enter Roll no." />
-            <button type="submit">Submit</button>
+            <button class="submitButton btn btn-primary" type="submit">Submit</button>
           </form>
         )}
         <br />
@@ -75,6 +82,9 @@ function App() {
               <th>Roll</th>
               <th>Class</th>
               <th>Section</th>
+              <th>CheckInTime</th>
+          
+              
             </tr>
             {students.map((student) => (
               <tr>
@@ -82,6 +92,8 @@ function App() {
                 <td>{student.roll}</td>
                 <td>{student.classs}</td>
                 <td>{student.section}</td>
+                <td>{student.checkInTime}</td>
+                
               </tr>
             ))}
           </table>
